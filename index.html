@@ -227,7 +227,7 @@
     <!-- Item 1 -->
     <article class="inventory-item fade-up" tabindex="0">
       <figure class="vehicle-figure">
-        <img loading="lazy" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1763704651/PXL_20250927_201523836_2_qrvwkh.jpg" alt="2011 Mitsubishi Lancer Evolution X">
+        <img loading="lazy" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1763704651/PXL_20250927_201523836_2_qrvwkh.jpg" alt="2011 Mitsubishi Lancer Evolution X">
       </figure>
 
       <div class="vehicle-meta">
@@ -238,7 +238,7 @@
         <div class="specs" role="list">
           <div class="spec"><small>Model</small>Lancer Evo X</div>
           <div class="spec"><small>Transmission</small>5-Speed Manual</div>
-          <div class="spec"><small>Mileage</small>100,600</div>
+          <div class="spec"><small>Mileage</small>Available on request</div>
         </div>
 
         <div class="actions">
@@ -251,7 +251,7 @@
     <!-- Item 2 -->
     <article class="inventory-item fade-up" tabindex="0">
       <figure class="vehicle-figure">
-        <img loading="lazy" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765482143/PXL_20251129_233513135_yl1gxw.jpg" alt="2014 Hyundai Veloster">
+        <img loading="lazy" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765482143/PXL_20251129_233513135_yl1gxw.jpg" alt="2014 Hyundai Veloster">
       </figure>
 
       <div class="vehicle-meta">
@@ -262,7 +262,7 @@
         <div class="specs" role="list">
           <div class="spec"><small>Model</small>Veloster</div>
           <div class="spec"><small>Transmission</small>6-Speed Manual</div>
-          <div class="spec"><small>Mileage</small>122,686</div>
+          <div class="spec"><small>Mileage</small>Available on request</div>
         </div>
 
         <div class="actions">
@@ -333,7 +333,7 @@
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.getElementById('message').value = prefill;
-    document.getElementById('name').focus();
+    requestAnimationFrame(() => document.getElementById('name').focus());
   }
   function closeModal(){
     modal.classList.remove('open');
