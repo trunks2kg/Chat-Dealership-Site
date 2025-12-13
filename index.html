@@ -59,17 +59,13 @@ header {
   text-decoration:none;
   color:var(--text);
 }
-
-/* New: dedicated logo wrapper to crop the image cleanly */
 .brand-logo {
   position:relative;
   height:96px;
   max-height:12vh;
-  width:260px; /* adjust if needed */
+  width:260px;
   overflow:hidden;
 }
-
-/* Crop 3px off the right so any edge is hidden */
 .brand-logo img {
   position:absolute;
   top:0;
@@ -79,7 +75,6 @@ header {
   display:block;
   clip-path: inset(0 3px 0 0);
 }
-
 nav {
   display:flex;gap:1rem;align-items:center
 }
@@ -110,8 +105,10 @@ nav {
   z-index:1;
 }
 .hero-figure img {
-  width:100%;height:100%;object-fit:cover;display:block;
-  filter:none;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 .hero-figure::after {
   content:'';
@@ -144,12 +141,12 @@ main {
   max-width:var(--maxWidth);margin:4rem auto;padding:0 1rem
 }
 .inventory-list {
-  display:flex;flex-direction:column;gap:6rem
+  display:flex;flex-direction:column;gap:4rem
 }
 .inventory-item {
   display:grid;
   grid-template-columns:1fr 560px;
-  gap:2.5rem;
+  gap:2rem;
   align-items:center;
   width:100%;
   contain:layout paint;
@@ -158,6 +155,7 @@ main {
   grid-template-columns:560px 1fr;
 }
 .vehicle-figure {
+  width:100%;
   height:420px;overflow:hidden;border-radius:6px;cursor:pointer;position:relative
 }
 .vehicle-figure img {
@@ -168,7 +166,8 @@ main {
   transform:scale(1.02);
 }
 .vehicle-meta {
-  padding:0 0.5rem
+  padding:0;
+  max-width:none;
 }
 .kicker {
   font-weight:600;color:var(--muted);text-transform:uppercase;font-size:.85rem;letter-spacing:1px;margin-bottom:.6rem
@@ -177,10 +176,10 @@ main {
   font-size:1.6rem;margin:0 0 .75rem;font-weight:700
 }
 .vehicle-copy {
-  color:var(--muted);max-width:56ch;margin-bottom:1.2rem
+  color:var(--muted);margin-bottom:1.2rem
 }
 .specs {
-  display:flex;gap:1.6rem;flex-wrap:wrap;margin-bottom:1.25rem
+  display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.25rem
 }
 .spec {
   font-weight:600;color:var(--text);min-width:120px
@@ -217,7 +216,13 @@ footer iframe {
     grid-template-columns:1fr !important
   }
   .vehicle-figure {
-    height:360px
+    height:360px;
+    max-width:700px;
+    margin:0 auto;
+  }
+  .vehicle-meta{
+    max-width:700px;
+    margin:0 auto;
   }
   .hero-inner {
     padding:6rem 1rem 4rem
@@ -229,7 +234,10 @@ footer iframe {
 @media (max-width:768px) {
   .brand-logo {
     height:72px;
-    width:195px; /* keep same aspect ratio as desktop width/height */
+    width:195px;
+  }
+  .hero{
+    min-height:100vh;
   }
 }
 @media (max-width:520px) {
@@ -244,7 +252,8 @@ footer iframe {
     text-shadow:0 1px 3px rgba(0,0,0,0.3);
   }
   .vehicle-figure {
-    height:260px
+    height:260px;
+    margin:0 auto
   }
   main {
     margin-top:3rem
@@ -493,10 +502,11 @@ footer iframe {
     </article>
   </div>
 </main>
-<footer>
+<footer id="contact">
   <p>&copy; 2025 Veritas Motor Group — Serving the community with integrity.</p>
   <p>1289 Reamwood Ave Suite C, Sunnyvale, CA 94089</p>
   <p>(408) 213-7456</p>
+  <p><strong>Call to schedule a test drive.</strong></p>
 </footer>
 <!-- Contact Modal -->
 <div class="modal" id="modalContact" aria-hidden="true" role="dialog" aria-label="Contact form">
