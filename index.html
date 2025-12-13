@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -15,6 +16,9 @@
 }
 * {
 box-sizing:border-box
+}
+html {
+scroll-behavior:smooth;
 }
 html,body {
 height:100%;
@@ -41,6 +45,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 padding:0.75rem 1rem;
+height:80px;
 }
 .site-inner {
 max-width:var(--maxWidth);
@@ -85,6 +90,7 @@ text-decoration:none;
 padding:8px 10px;
 border-radius:6px;
 white-space:nowrap;
+cursor:pointer;
 }
 .nav-link:hover {
 color:var(--text)
@@ -236,6 +242,20 @@ outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,0,0,0.05);
 .form-actions {
 display:flex;gap:1rem;justify-content:center;
 }
+.form-success {
+display:none;
+padding:1rem;
+background:#d4edda;
+color:#155724;
+border:1px solid #c3e6cb;
+border-radius:6px;
+margin-bottom:1.5rem;
+text-align:center;
+font-weight:600;
+}
+.form-success.show {
+display:block;
+}
 footer {
 margin-top:6rem;padding:3.2rem 1rem;background:transparent;color:var(--muted);
 text-align:center;font-size:.95rem;
@@ -260,6 +280,9 @@ font-size:2.4rem
 }
 }
 @media (max-width:768px) {
+header {
+height:70px;
+}
 .brand-logo {
 height:72px;
 width:195px;
@@ -289,6 +312,9 @@ justify-content:center;
 }
 }
 @media (max-width:520px) {
+header {
+height:65px;
+}
 .hero-title {
 font-size:1.8rem;
 text-shadow:0 2px 6px rgba(0,0,0,0.5);
@@ -579,7 +605,8 @@ width:60px;height:60px
 <h2>Get in Touch</h2>
 <p>Interested in a vehicle or have questions? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
 <div class="form-wrapper">
-<form id="contactPageForm">
+<div class="form-success" id="contactSuccess">✓ Message sent successfully! We'll get back to you soon.</div>
+<form id="contactPageForm" action="https://usebasin.com/f/c6b5ba9a258f" method="POST">
 <div class="form-group">
 <label for="contact-name">Name</label>
 <input type="text" id="contact-name" name="name" placeholder="John Doe" required>
@@ -617,24 +644,23 @@ width:60px;height:60px
 <h3>Contact us about a vehicle</h3>
 <button class="modal-close" aria-label="Close">✕</button>
 </div>
-<form id="contactForm">
+<form id="contactForm" action="https://usebasin.com/f/c6b5ba9a258f" method="POST">
 <div class="field">
-<label for="name">Your name</label>
-<input id="name" name="name" type="text" placeholder="Jane Buyer" required>
+<label for="modal-name">Your name</label>
+<input id="modal-name" name="name" type="text" placeholder="Jane Buyer" required>
 </div>
 <div class="field">
-<label for="email">Email</label>
-<input id="email" name="email" type="email" placeholder="you@email.com" required>
+<label for="modal-email">Email</label>
+<input id="modal-email" name="email" type="email" placeholder="you@email.com" required>
 </div>
 <div class="field">
-<label for="message">Message</label>
-<textarea id="message" name="message" rows="4" placeholder="Interested in the vehicle" required></textarea>
+<label for="modal-message">Message</label>
+<textarea id="modal-message" name="message" rows="4" placeholder="Interested in the vehicle" required></textarea>
 </div>
 <div class="modal-actions">
 <button type="button" class="btn secondary modal-cancel">Cancel</button>
 <button type="submit" class="btn">Send</button>
 </div>
-<p class="muted" style="margin-top:.65rem">Submitting will open your email client. For production, connect this form to a backend or form service.</p>
 </form>
 </div>
 </div>
@@ -789,42 +815,70 @@ function openModal(prefill=""){
 lastFocusedElement = document.activeElement;
 modal.classList.add('open');
 modal.setAttribute('aria-hidden','false');
-document.getElementById('message').value = prefill;
-requestAnimationFrame(() => document.getElementById('name').focus());
+document.getElementById('modal-message').value = prefill;
+requestAnimationFrame(() => document.getElementById('modal-name').focus());
 }
 function closeModal(){
 modal.classList.remove('open');
 modal.setAttribute('aria-hidden','true');
 if(lastFocusedElement) lastFocusedElement.focus();
 }
-document.querySelector('.open-contact').addEventListener('click', e => {
-e.preventDefault();
-openModal();
-});
 modalClose.addEventListener('click', closeModal);
 modalCancel.addEventListener('click', closeModal);
 modal.addEventListener('click', e => {
 if (e.target === modal) closeModal();
 });
-document.getElementById('contactForm').addEventListener('submit', e => {
+// Navigation link scroll behavior
+document.querySelectorAll('.nav-link').forEach(link => {
+link.addEventListener('click', (e) => {
+const href = link.getAttribute('href');
+if (href && href.startsWith('#')) {
 e.preventDefault();
-const name = encodeURIComponent(document.getElementById('name').value);
-const email = encodeURIComponent(document.getElementById('email').value);
-const message = encodeURIComponent(document.getElementById('message').value);
-const subject = encodeURIComponent('Vehicle inquiry from website');
-const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-window.location.href = `mailto:alan@veritasmotorgroup.com?subject=${subject}&body=${body}`;
+const element = document.querySelector(href);
+if (element) {
+const headerHeight = document.querySelector('header').offsetHeight;
+const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+window.scrollTo({
+top: elementPosition - headerHeight,
+behavior: 'smooth'
+});
+}
+}
+});
 });
 // Contact page form submission
 document.getElementById('contactPageForm').addEventListener('submit', e => {
 e.preventDefault();
-const name = encodeURIComponent(document.getElementById('contact-name').value);
-const email = encodeURIComponent(document.getElementById('contact-email').value);
-const phone = encodeURIComponent(document.getElementById('contact-phone').value);
-const message = encodeURIComponent(document.getElementById('contact-message').value);
-const subject = encodeURIComponent('Contact Form Submission');
-const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`);
-window.location.href = `mailto:alan@veritasmotorgroup.com?subject=${subject}&body=${body}`;
+const form = e.target;
+const formData = new FormData(form);
+fetch('https://usebasin.com/f/c6b5ba9a258f', {
+method: 'POST',
+body: formData
+}).then(() => {
+// Show success message
+document.getElementById('contactSuccess').classList.add('show');
+// Reset form
+form.reset();
+// Hide success message after 5 seconds
+setTimeout(() => {
+document.getElementById('contactSuccess').classList.remove('show');
+}, 5000);
+}).catch(err => console.error('Form submission error:', err));
+});
+// Modal form submission
+document.getElementById('contactForm').addEventListener('submit', e => {
+e.preventDefault();
+const form = e.target;
+const formData = new FormData(form);
+fetch('https://usebasin.com/f/c6b5ba9a258f', {
+method: 'POST',
+body: formData
+}).then(() => {
+// Close modal on success
+closeModal();
+// Reset form
+form.reset();
+}).catch(err => console.error('Form submission error:', err));
 });
 </script>
 </body>
