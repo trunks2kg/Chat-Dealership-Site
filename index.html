@@ -35,7 +35,6 @@ header {
   top:0;
   z-index:40;
   backdrop-filter: blur(6px);
-  /* Make header a solid white so it matches the logo's white exactly */
   background:#ffffff;
   border-bottom:1px solid rgba(10,10,10,0.04);
   display:flex;
@@ -59,18 +58,29 @@ header {
   gap:12px;
   text-decoration:none;
   color:var(--text);
-  /* Remove the negative margin and clip any overflow from the logo image */
-  margin-right:0;
-  overflow:hidden;
 }
-.brand img {
+
+/* New: dedicated logo wrapper to crop the image cleanly */
+.brand-logo {
+  position:relative;
   height:96px;
   max-height:12vh;
+  /* Set an explicit width that looks good for your logo */
+  width:260px; /* adjust if needed */
+  overflow:hidden;
+}
+
+/* Crop 3px off the right so any edge is hidden */
+.brand-logo img {
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
   width:auto;
   display:block;
-  /* Slightly crop the image so the right edge cannot show */
-  transform:translateX(-2px);
+  clip-path: inset(0 3px 0 0);
 }
+
 nav {
   display:flex;gap:1rem;align-items:center
 }
@@ -218,8 +228,9 @@ footer iframe {
   }
 }
 @media (max-width:768px) {
-  .brand img {
+  .brand-logo {
     height:72px;
+    width:195px; /* keep same aspect ratio as desktop width/height */
   }
 }
 @media (max-width:520px) {
@@ -369,7 +380,9 @@ footer iframe {
 <header>
   <div class="site-inner">
     <a class="brand" href="#">
-      <img src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765567703/ChatGPT_Image_Dec_12_2025_11_28_07_AM_ywnvbz.jpg" alt="Veritas Motor Group">
+      <div class="brand-logo">
+        <img src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765567703/ChatGPT_Image_Dec_12_2025_11_28_07_AM_ywnvbz.jpg" alt="Veritas Motor Group">
+      </div>
     </a>
     <nav aria-label="Primary navigation">
       <a class="nav-link" href="#inventory">Inventory</a>
