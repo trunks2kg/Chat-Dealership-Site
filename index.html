@@ -40,7 +40,7 @@ border-bottom:1px solid rgba(10,10,10,0.04);
 display:flex;
 align-items:center;
 justify-content:center;
-padding:1rem;
+padding:0.75rem 1rem;
 }
 .site-inner {
 max-width:var(--maxWidth);
@@ -53,10 +53,10 @@ padding:0 1rem;
 margin:0 auto;
 }
 .brand {
-display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)
+display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);overflow:hidden
 }
 .brand img {
-height:68px;width:auto;display:block;opacity:0.85
+height:120px;width:auto;display:block;opacity:0.5
 }
 nav {
 display:flex;gap:1rem;align-items:center
@@ -656,7 +656,7 @@ const email = encodeURIComponent(document.getElementById('email').value);
 const message = encodeURIComponent(document.getElementById('message').value);
 const subject = encodeURIComponent('Vehicle inquiry from website');
 const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-window.location.href = `mailto:sales@veritasmotorgroup.com?subject=${subject}&body=${body}`;
+window.location.href = `mailto:alan@veritasmotorgroup.com?subject=${subject}&body=${body}`;
 });
 </script>
 </body>
