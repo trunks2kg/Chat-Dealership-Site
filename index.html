@@ -63,6 +63,10 @@ align-items:center;
 gap:12px;
 text-decoration:none;
 color:var(--text);
+cursor:pointer;
+border:none;
+background:none;
+padding:0;
 }
 .brand-logo {
 position:relative;
@@ -91,6 +95,8 @@ padding:8px 10px;
 border-radius:6px;
 white-space:nowrap;
 cursor:pointer;
+border:none;
+background:none;
 }
 .nav-link:hover {
 color:var(--text)
@@ -484,14 +490,14 @@ width:60px;height:60px
 <body>
 <header>
 <div class="site-inner">
-<a class="brand" href="#">
+<button class="brand" id="logoBtn" aria-label="Back to top">
 <div class="brand-logo">
 <img src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765567703/ChatGPT_Image_Dec_12_2025_11_28_07_AM_ywnvbz.jpg" alt="Veritas Motor Group">
 </div>
-</a>
+</button>
 <nav aria-label="Primary navigation">
-<a class="nav-link" href="#inventory-start">Inventory</a>
-<a class="nav-link" href="#contact-form">Contact</a>
+<button class="nav-link" id="inventoryBtn">Inventory</button>
+<button class="nav-link" id="contactBtn">Contact</button>
 </nav>
 </div>
 </header>
@@ -508,7 +514,7 @@ width:60px;height:60px
 </div>
 </section>
 <main>
-<div id="inventory-start"></div>
+<div id="inventory-anchor" style="scroll-margin-top: 120px;"></div>
 <div id="inventory" class="inventory-list">
 <!-- Item 1: 2011 Mitsubishi Lancer Evolution X -->
 <article class="inventory-item fade-up" tabindex="0">
@@ -601,7 +607,7 @@ width:60px;height:60px
 </div>
 
 <!-- Contact Form Section -->
-<section class="contact-section fade-up" id="contact-form">
+<section class="contact-section fade-up" id="contact-anchor" style="scroll-margin-top: 120px;">
 <h2>Get in Touch</h2>
 <p>Interested in a vehicle or have questions? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
 <div class="form-wrapper">
@@ -828,23 +834,25 @@ modalCancel.addEventListener('click', closeModal);
 modal.addEventListener('click', e => {
 if (e.target === modal) closeModal();
 });
-// Navigation link scroll behavior
-document.querySelectorAll('.nav-link').forEach(link => {
-link.addEventListener('click', (e) => {
-const href = link.getAttribute('href');
-if (href && href.startsWith('#')) {
+// Logo button - scroll to top
+document.getElementById('logoBtn').addEventListener('click', (e) => {
 e.preventDefault();
-const element = document.querySelector(href);
-if (element) {
-const headerHeight = document.querySelector('header').offsetHeight;
-const elementPosition = element.getBoundingClientRect().top + window.scrollY;
 window.scrollTo({
-top: elementPosition - headerHeight,
+top: 0,
 behavior: 'smooth'
 });
-}
-}
 });
+// Inventory button - scroll to inventory
+document.getElementById('inventoryBtn').addEventListener('click', (e) => {
+e.preventDefault();
+const inventoryAnchor = document.getElementById('inventory-anchor');
+inventoryAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+// Contact button - scroll to contact
+document.getElementById('contactBtn').addEventListener('click', (e) => {
+e.preventDefault();
+const contactAnchor = document.getElementById('contact-anchor');
+contactAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 // Contact page form submission
 document.getElementById('contactPageForm').addEventListener('submit', e => {
