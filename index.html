@@ -130,8 +130,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 display:block;
-content-visibility:auto;
-contain-intrinsic-size:auto 1080px;
+decoding:async;
 }
 .hero-figure::after {
 content:'';
@@ -177,11 +176,6 @@ contain:layout paint;
 }
 .inventory-item:nth-child(even) {
 grid-template-columns:560px 1fr;
-}
-.inventory-item:focus-visible {
-outline:2px solid var(--accent);
-outline-offset:4px;
-border-radius:4px;
 }
 .vehicle-figure {
 height:420px;overflow:hidden;border-radius:6px;cursor:pointer;position:relative
@@ -617,7 +611,7 @@ width:60px;height:60px
 <div id="inventory-anchor" style="scroll-margin-top: 120px;"></div>
 <div id="inventory" class="inventory-list">
 <!-- Item 1: 2011 Mitsubishi Lancer Evolution X -->
-<article class="inventory-item fade-up" tabindex="0">
+<article class="inventory-item fade-up">
 <figure class="vehicle-figure gallery-trigger" data-vehicle="evo-x">
 <img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1763704651/PXL_20250927_201523836_2_qrvwkh.jpg" alt="2011 Mitsubishi Lancer Evolution X" width="560" height="420">
 </figure>
@@ -637,7 +631,7 @@ width:60px;height:60px
 </div>
 </article>
 <!-- Item 2: 2014 Hyundai Veloster -->
-<article class="inventory-item fade-up" tabindex="0">
+<article class="inventory-item fade-up">
 <figure class="vehicle-figure gallery-trigger" data-vehicle="veloster">
 <img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765482143/PXL_20251129_233513135_yl1gxw.jpg" alt="2014 Hyundai Veloster" width="560" height="420">
 </figure>
@@ -657,7 +651,7 @@ width:60px;height:60px
 </div>
 </article>
 <!-- Item 3: 2016 BMW 320I -->
-<article class="inventory-item fade-up" tabindex="0">
+<article class="inventory-item fade-up">
 <figure class="vehicle-figure vehicle-coming-soon gallery-trigger" data-vehicle="bmw-320i">
 <img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765585700/automobile-1834274_mpbjda.jpg" alt="2016 BMW 320I" width="560" height="420">
 </figure>
@@ -674,7 +668,7 @@ width:60px;height:60px
 </div>
 </article>
 <!-- Item 4: 2015 BMW X3 sDrive28i -->
-<article class="inventory-item fade-up" tabindex="0">
+<article class="inventory-item fade-up">
 <figure class="vehicle-figure vehicle-coming-soon gallery-trigger" data-vehicle="bmw-x3">
 <img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765585361/car-2220016_rkhoia.jpg" alt="2015 BMW X3 sDrive28i" width="560" height="420">
 </figure>
@@ -691,7 +685,7 @@ width:60px;height:60px
 </div>
 </article>
 <!-- Item 5: 2010 Ford F-150 Raptor -->
-<article class="inventory-item fade-up" tabindex="0">
+<article class="inventory-item fade-up">
 <figure class="vehicle-figure vehicle-coming-soon">
 <img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765603249/joey-chacon-wyVdoMqF184-unsplash_wdwkoo.jpg" alt="2010 Ford F-150 Raptor" width="560" height="420">
 </figure>
