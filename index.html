@@ -879,8 +879,7 @@ galleryThumbnails.appendChild(thumb);
 updateGalleryDisplay();
 galleryModal.classList.add('open');
 galleryModal.setAttribute('aria-hidden', 'false');
-document.body.inert = true;
-galleryModal.inert = false;
+document.body.style.overflow = 'hidden';
 }
 function updateGalleryDisplay() {
 galleryMainImage.src = currentGallery[currentImageIndex];
@@ -900,7 +899,7 @@ updateGalleryDisplay();
 function closeGallery() {
 galleryModal.classList.remove('open');
 galleryModal.setAttribute('aria-hidden', 'true');
-document.body.inert = false;
+document.body.style.overflow = '';
 }
 // Event delegation for gallery triggers
 document.addEventListener('click', e => {
@@ -937,20 +936,19 @@ const modal = document.getElementById('modalContact');
 const modalClose = document.querySelector('.modal-close');
 const modalCancel = document.querySelector('.modal-cancel');
 let lastFocusedElement = null;
-function openModal(prefill=""){
+function openModal(prefill = "") {
 lastFocusedElement = document.activeElement;
 modal.classList.add('open');
-modal.setAttribute('aria-hidden','false');
-document.body.inert = true;
-modal.inert = false;
+modal.setAttribute('aria-hidden', 'false');
+document.body.style.overflow = 'hidden';
 document.getElementById('modal-message').value = prefill;
 requestAnimationFrame(() => document.getElementById('modal-name').focus());
 }
-function closeModal(){
+function closeModal() {
 modal.classList.remove('open');
-modal.setAttribute('aria-hidden','true');
-document.body.inert = false;
-if(lastFocusedElement) lastFocusedElement.focus();
+modal.setAttribute('aria-hidden', 'true');
+document.body.style.overflow = '';
+if (lastFocusedElement) lastFocusedElement.focus();
 }
 modalClose.addEventListener('click', closeModal);
 modalCancel.addEventListener('click', closeModal);
