@@ -190,19 +190,6 @@ decoding:async;
 .vehicle-figure:hover img {
 transform:scale(1.02);
 }
-.vehicle-figure.vehicle-coming-soon::after {
-content:'Coming Soon';
-position:absolute;
-top:12px;
-right:12px;
-background:rgba(0,0,0,0.75);
-color:#fff;
-padding:0.5rem 0.75rem;
-border-radius:6px;
-font-weight:700;
-font-size:0.85rem;
-z-index:10;
-}
 .vehicle-meta {
 padding:0 0.5rem
 }
@@ -654,18 +641,21 @@ width:60px;height:60px
 </article>
 <!-- Item 3: 2016 BMW 320I -->
 <article class="inventory-item fade-up">
-<figure class="vehicle-figure vehicle-coming-soon gallery-trigger" data-vehicle="bmw-320i">
-<img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765585700/automobile-1834274_mpbjda.jpg" alt="2016 BMW 320I" width="560" height="420">
+<figure class="vehicle-figure gallery-trigger" data-vehicle="bmw-320i">
+<img loading="lazy" decoding="async" fetchpriority="low" src="https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855474/PXL_20251216_010906206_anixx3.jpg" alt="2016 BMW 320I" width="560" height="420">
 </figure>
 <div class="vehicle-meta">
 <div class="kicker">2016 • BMW</div>
 <h2 class="vehicle-title">2016 BMW 320I</h2>
-<p class="vehicle-copy">Luxury compact sedan with refined German engineering and sport-tuned handling. Expect availability soon.</p>
+<p class="vehicle-copy">Luxury compact sedan with refined German engineering and sport-tuned handling. This well-maintained BMW is ready for its next owner.</p>
 <div class="specs" role="list">
 <div class="spec"><small>Model</small>320I</div>
 <div class="spec"><small>Transmission</small>Automatic</div>
 <div class="spec"><small>Mileage</small>148,500</div>
-<div class="spec"><small>Status</small>Coming Soon</div>
+<div class="spec"><small>Price</small>$6,000</div>
+</div>
+<div class="actions">
+<button class="btn" onclick="openModal('2016 BMW 320I')">Request Info</button>
 </div>
 </div>
 </article>
@@ -835,6 +825,31 @@ const vehicleGalleries = {
 'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765523377/PXL_20251129_233727959.MP_qvrq1h.jpg',
 'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765523381/PXL_20251129_233741172_bhkhzx.jpg',
 'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765523389/PXL_20251129_233748453_mxvcrr.jpg',
+],
+'bmw-320i': [
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855474/PXL_20251216_010906206_anixx3.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855473/PXL_20251216_010834238_zljqih.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855463/PXL_20251216_010825593_ylqqua.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855463/PXL_20251216_010820392_hamezr.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855462/PXL_20251216_010813878_zgualk.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855458/PXL_20251216_010805761_xpv78o.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855460/PXL_20251216_010754809_korqyg.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855459/PXL_20251216_010747783_uvu2jw.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855485/PXL_20251216_011145911.MP_opgbza.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855491/PXL_20251216_011300827.MP_bs1fmr.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855487/PXL_20251216_011320902_qcfom9.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855490/PXL_20251216_011352846_dwvjf7.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855488/PXL_20251216_011347235_marvlm.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855481/PXL_20251216_011112292.MP_zmo3h8.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855483/PXL_20251216_011119587.MP_go4u5w.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855482/PXL_20251216_011032373.MP_cmnxbd.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855478/PXL_20251216_011040089_sslliu.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855486/PXL_20251216_011204209_ygsfvc.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855478/PXL_20251216_011128239_yhcntc.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855472/PXL_20251216_010949958_bkvkm6.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855472/PXL_20251216_010959449_xaol9y.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855473/PXL_20251216_011007966_j4pcgw.jpg',
+'https://res.cloudinary.com/dyg8btkjp/image/upload/v1765855472/PXL_20251216_011014895_evakzk.jpg',
 ]
 };
 let currentGallery = [];
