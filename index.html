@@ -797,21 +797,21 @@ width:60px;height:60px
 </div>
 </section>
 
-<section aria-labelledby="accessibility-heading" style="margin-top:4rem;">
-<h2 id="accessibility-heading">Accessibility Statement</h2>
-<p>
-Veritas Motor Group is committed to ensuring digital accessibility for all users.
-If you experience difficulty accessing any content on this site, please contact us at
-<a href="mailto:veritasmotorgroup@gmail.com">veritasmotorgroup@gmail.com</a>,
-and we will make every reasonable effort to assist you.
-</p>
-</section>
 </main>
 
 <footer>
 <address>1289 Reamwood Ave Suite C, Sunnyvale, CA 94089</address>
 <p><a href="tel:+14082137456">(408) 213-7456</a></p>
 <p>&copy; 2025 Veritas Motor Group — Serving the community with integrity.</p>
+<section aria-labelledby="accessibility-heading">
+<h2 id="accessibility-heading" style="margin: 1rem 0 0;">Accessibility Statement</h2>
+<p style="max-width: 56ch; margin: 0.5rem auto 0;">
+Veritas Motor Group is committed to ensuring digital accessibility for all users.
+If you experience difficulty accessing any content on this site, please contact us at
+<a href="mailto:veritasmotorgroup@gmail.com">veritasmotorgroup@gmail.com</a>,
+and we will make every reasonable effort to assist you.
+</p>
+</section>
 </footer>
 
 <!-- Contact Modal -->
@@ -1118,7 +1118,7 @@ if (contactPageForm) {
         const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
         if (!emailPattern.test(value)) {
           if (errorEl) {
-            errorEl.textContent = 'Please enter a valid email address, such as name@example.com.';
+            errorEl.textContent = 'Please enter a valid email address, such as [name@example.com](mailto:name@example.com).';
           }
           field.classList.add('input-error');
           field.setAttribute('aria-invalid', 'true');
